@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>produit</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button  menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+    
+  
+    
+  
+</ion-header>
+
+<ion-content class='ion-padding'>
+  <ion-searchbar
+  search-icon ="search-outline"
+  showcancelbutton=""
+  showCancelButton="always"
+  (ionInput)="filterList($event)"
+  placeholder="Rechercher"
+></ion-searchbar>
+    
+  <ion-list>
+   
+   <ion-item *ngFor="let produit of displayProduits">
+   
+     <ion-thumbnail item-left  style="margin-right: 10px;" >
+       <ion-img *ngIf="produit.image" [src]="produit.image" style="border-radius: 50% !important ;"></ion-img>
+     </ion-thumbnail>
+      <ion-label>
+    <h3 style="font-size: 20px;font-weight: bold;">{{produit.nom}}</h3>
+  <p>{{ produit.TVA}}</p>
+  </ion-label>
+   </ion-item>
+ </ion-list>
+</ion-content>

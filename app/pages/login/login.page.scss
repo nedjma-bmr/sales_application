@@ -1,0 +1,80 @@
+
+
+ion-content{
+    text-align: center;
+    --ion-background-color:#f6f6f6  ;
+}
+
+
+
+img{
+    width: 100px;
+    margin-top:40px;
+    filter:#ff105f 50% , #ffad06 50%;
+
+}
+
+
+button{
+    -webkit-box-shadow : 0 10px 30px 0 rgba(95,186,233,0.4);
+    box-shadow:0 10px 30px 0 rgba(95,186,233,0.4); ;
+    margin :0px;
+   
+}
+
+.login{
+    margin-top: 51px;
+    text-align:center;
+    border:none;
+    padding: 18px 81px;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+    width: 85%;
+    height: 45px;
+    color:   #eaeaea ;
+    border-radius: 30px;
+    border: 0;
+    font-weight: 700;
+    background: linear-gradient(to right ,#32be8f 0% , #38d39f, #32be8f);
+}
+
+
+.input{
+background-color: #f6f6f6;
+color:#535353;
+--padding-bottom: 15px;
+--padding-top: 15px;
+--padding-start : 5px;
+padding-left: 10px;
+padding : 15px;
+ //text-decoration: none;
+font-size: 16px;
+//margin: 5px;
+//width: 85%;
+//border: 2px solid #f6f6f6;
+//height: 70px;
+text-align: left;
+//margin: 0 auto;
+//margin-bottom: 10px;
+//border-radius:8px ;
+text-indent: 1px;
+}
+ .textbox{
+    padding : 5px;
+ }
+
+  span {
+      color : dimgray ;
+     
+      
+  }
+  ion-input{
+      height: 60px;
+  }
+
+#passwordToggleIcon{
+    height: 100%;
+}

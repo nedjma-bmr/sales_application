@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { produit } from 'src/app/models/produit.model';
+import { ApiResponse } from 'src/app/models/api-response.model';
 
 
 @Injectable({
@@ -28,4 +29,18 @@ export class ProduitsService {
   }
 
   
+  create(produit: produit){
+    return this.http.post(this.url, produit);
 }
+
+update(produit:produit ,id:string){
+  return this.http.put(this.url + '/' + id, produit);
+}
+
+remove (id:string) {
+      return this.http.delete<ApiResponse>(this.url + '/' + id);
+}
+
+}
+
+

@@ -122,8 +122,8 @@ if (this.gender=="nom") {
         text:'Oui',
         handler :() => {
           this._clientService.remove(id).subscribe((data)=>{
+           
             if(data.status == "success"){
-             
             this.displayClients = this.clients.filter(elem => elem.id !== id);// elem :parametre pr pointer les elements de la liste des clients 
             }else{
               console.error(data.message);

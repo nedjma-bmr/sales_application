@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color = "green">
+    <ion-buttons slot="end" full="outline">
+      <ion-button color="dark" (click)="closeModal()" >
+        <ion-icon name="close" > </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Ajout Devis</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form (ngSubmit)="submitForm()" novalidate>
+
+    <ion-item lines = "full">
+      <ion-label position="floating"> Numéro </ion-label>
+      <ion-input  type="text" [(ngModel)]="devisModel.num_proforma" name="num_proforma"></ion-input>
+    </ion-item>
+    
+    <ion-item lines="full">
+      <ion-label position="floating">Date</ion-label>
+      <ion-datetime [(ngModel)]="devisModel.date_proforma" name = "date_proforma"></ion-datetime>
+    </ion-item>
+
+    <ion-item lines="full" class="itm">
+      
+      <ion-label style="color : dimgray">--Séléctionner un client-- </ion-label>
+
+
+    
+    <ionic-selectable 
+        
+			[(ngModel)]="clientDevis"
+			itemValueField="id"
+			itemTextField="design_client"
+      [canSearch]="true" 
+      [items]="clients"
+      headerColor="success" 
+      
+      [ngModelOptions]="{standalone: true}"
+      >
+      <div class ="ionic-selectable-icon"></div>
+      <ng-template ionicSelectableCloseButtonTemplate>
+				<ion-icon name="arrow-back"></ion-icon>
+			</ng-template>
+ 
+      
+    </ionic-selectable>
+  
+      </ion-item>
+
+      <ion-item lines ="full" button (click)="AjouterProduit()">
+        <ion-col text-center>
+        <ion-label  class="alignerTitre" > Produits </ion-label>
+        
+      </ion-col>
+      </ion-item>
+    
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="green" expand="block" id="enregisterDevis">Enregister</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

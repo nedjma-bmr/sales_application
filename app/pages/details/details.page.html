@@ -5,13 +5,13 @@
       <ion-back-button defaultHref="clients"></ion-back-button>
     </ion-buttons>
 
-    
-    
+  
+  
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+   
   <ion-content padding>
     <ion-toolbar>
       <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment" color="success">
@@ -27,14 +27,56 @@
         
       </ion-segment>
     </ion-toolbar>
-  
     <ion-slides #slides (ionSlideDidChange)="slideChanged()" >
       <ion-slide>
         
       </ion-slide>
-      <ion-slide>
-        
+      <ion-slide style="display: block;">
+
+        <br>
+   <h3>Veuillez choisir un client </h3>
+        <ion-item class="barreRch">
+          <ion-searchbar
+        search-icon ="search-outline"
+        showcancelbutton=""
+        (ionInput)="filterList($event)"
+        placeholder="Rechercher"
+      ></ion-searchbar>
+          <ion-select interface="popover" [(ngModel)]="gender" placeholder="avec" >
+            <ion-select-option value="code"> Code</ion-select-option>
+           <ion-select-option value="nom"> Nom</ion-select-option>
+           
+          </ion-select>
+          
+        </ion-item> 
+
+    <ion-radio-group value="client">
+      <ion-list *ngFor = "let client of displayClients">
+       <ion-item button (click)="openDetail()" > 
+       <ion-avatar slot="start">
+         <div class="avatar">
+            {{client.design_client.substring(0, 1).toUpperCase()}}
+         </div>
+       </ion-avatar>
+       <ion-label> 
+        <h3 class ="title">{{client.design_client}}</h3>
+        <p class ="subtext">
+           {{ 'De ' +  client.adresse + ' Tel: ' + client.tel  }}
+      </p>
+    </ion-label>
+     <ion-radio name="client" [value]="client.code"></ion-radio>
+    </ion-item>
+    
+  
+  </ion-list>
+</ion-radio-group>
       </ion-slide>
+        
+
+
+ 
+  
+ 
       <ion-slide>
         
       </ion-slide>

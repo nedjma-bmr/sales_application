@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title >détails du client {{ id }}</ion-title>
+    <ion-buttons slot = "start">
+      <ion-back-button defaultHref="clients"></ion-back-button>
+    </ion-buttons>
+
+    
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content padding>
+    <ion-toolbar>
+      <ion-segment scrollable (ionChange)="segmentChanged()" [(ngModel)]="segment" color="success">
+        <ion-segment-button value="0">
+          Devis
+        </ion-segment-button>
+        <ion-segment-button value="1">
+          Commandes
+        </ion-segment-button>
+        <ion-segment-button value="2">
+          Factures
+        </ion-segment-button>
+        <ion-segment-button value="3">
+          Livraison
+        </ion-segment-button>
+        
+      </ion-segment>
+    </ion-toolbar>
+  
+    <ion-slides #slides (ionSlideDidChange)="slideChanged()" >
+      <ion-slide>
+     
+            <ion-list class="detail" >
+              <ion-item *ngFor="let devis of clientDevis" >
+              <ion-label >
+               <h3> {{ devis.num_proforma }} </h3>
+               <p>
+      
+                {{ devis.date_proforma }} 
+                
+               </p>
+
+              </ion-label>
+            </ion-item>  
+            
+            </ion-list>
+         
+      </ion-slide>
+      <ion-slide>
+      
+            <ion-list class="detail" >
+              <ion-item *ngFor="let cmd of clientCmd" >
+              <ion-label >
+               <h3> {{ cmd.NumCmd }} </h3>
+               <p>
+      
+                {{ cmd.date }} 
+                
+               </p>
+
+              </ion-label>
+            </ion-item>  
+            
+            </ion-list>
+          
+      </ion-slide>
+      <ion-slide>
+        3
+      </ion-slide>
+      <ion-slide>
+        4
+      </ion-slide>
+    </ion-slides>
+  
+  </ion-content>
+</ion-content>

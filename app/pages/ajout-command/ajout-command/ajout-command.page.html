@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="green">
+    <ion-buttons slot="end" full="outline">
+      <ion-button color="dark" (click)="closeModal()">
+        <ion-icon name="close"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Ajout Commande</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form (ngSubmit)="submitForm1()" novalidate>
+  
+   
+
+    <ion-item lines="full">
+      <ion-label position="floating">Date</ion-label>
+      <ion-datetime [(ngModel)]="commandModel.date" name="date"></ion-datetime>
+    </ion-item>
+
+    <ion-item lines="full" class="itm">
+      <ion-label style="color: dimgray;">--Séléctionner un client-- </ion-label>
+
+      <ionic-selectable
+        [(ngModel)]="clientcmd"
+        itemValueField="id"
+        itemTextField="design_client"
+        [canSearch]="true"
+        [items]="clients"
+        headerColor="success"
+        
+        [ngModelOptions]="{standalone: true}"
+       
+      >
+        <div class="ionic-selectable-icon"></div>
+        <ng-template ionicSelectableCloseButtonTemplate>
+          <ion-icon name="arrow-back"></ion-icon>
+        </ng-template>
+      </ionic-selectable>
+    </ion-item>
+
+    <ion-item ion-button color="primary" (click)="ajouterproduit()">
+       Commander des produits
+    </ion-item>
+
+
+
+   
+    
+        <ion-button
+          type="submit"
+          color="green"
+          expand="block"
+          id="enregisterDevis"
+          >Enregister</ion-button
+        >
+      
+  </form>
+</ion-content>

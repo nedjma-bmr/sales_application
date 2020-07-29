@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/app/models/client.model';
 import { ClientsService } from 'src/app/services/clients/clients.service';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, ActionSheetController } from '@ionic/angular';
 import { ClientModalPage } from '../client-modal/client-modal.page';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { Devis } from 'src/app/models/devis.model';
+import { AjouModifClientPage } from '../ajou-modif-client/ajou-modif-client.page';
+
+
+
 
 
 @Component({
@@ -16,15 +21,18 @@ export class ClientsPage implements OnInit {
 gender : string ='' ; 
 //liste de tout les clients  
 clients: Client[];
-
+clientModel = new Client();
 //liste des client affichés
 displayClients:Client[];
+  devis:Devis[];
+ 
 
   constructor(
     private _clientService:ClientsService ,
      private alertCtrl: AlertController , 
      private modalCtrl: ModalController , 
-     private router : Router
+     private router : Router , 
+       
      ) { }
 // lancer à l'initialisation de la page
 /**
@@ -35,6 +43,9 @@ displayClients:Client[];
       this.clients=data;
       this.displayClients = data;
     }); 
+
+    
+    
   }
 
 async filterList(evt) {
@@ -91,7 +102,7 @@ if (this.gender=="nom") {
   updateClient(client:Client){
      this.modalCtrl
      .create({
-       component: ClientModalPage,
+       component: AjouModifClientPage,
        // il faut passer l'objet client au model
        componentProps: {client}
      })
@@ -100,7 +111,7 @@ if (this.gender=="nom") {
        return modal.onDidDismiss();
   }).then (({data, role}) =>{
     this.clients = this.clients.filter(std => {
-      if (data.id=== std.id){
+      if (this.clientModel.id=== std.id){
         return data ; // return updated client 
       }
       return std;
@@ -122,8 +133,8 @@ if (this.gender=="nom") {
         text:'Oui',
         handler :() => {
           this._clientService.remove(id).subscribe((data)=>{
-           
             if(data.status == "success"){
+             
             this.displayClients = this.clients.filter(elem => elem.id !== id);// elem :parametre pr pointer les elements de la liste des clients 
             }else{
               console.error(data.message);
@@ -140,8 +151,10 @@ if (this.gender=="nom") {
     
   }
 
-openDetail(){
-  this.router.navigateByUrl('/details');
+openDetail(clientId: string){
+  this._clientService.setCurrentClientId(clientId);
+  this.router.navigateByUrl('/detail-client');
+  
 }
  
 }

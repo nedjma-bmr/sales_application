@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header  >
+  <ion-toolbar color="primary">
     <ion-title>Commandes</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -8,5 +8,34 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  >
+    
+    <ion-fab-button color = "primary" >
+      <ion-icon name="add" (click)="ajoutercmd()" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-item>
+    <ion-searchbar
+      search-icon="search-outline"
+      showcancelbutton=""
+      showCancelButton="always"
+      (ionInput)="filterList($event)"
+      placeholder="Rechercher"
+      style="--border-radius: 20px;"
+    ></ion-searchbar>
+    <ion-label style="color: #999;"></ion-label>
+    <ion-select interface="popover" [(ngModel)]="gender">
+      <ion-select-option value="numero"> Numéro</ion-select-option>
+      <ion-select-option value="date"> Date</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-list>  
+  <ion-item *ngFor="let commande of displayCommandes" ion-button (click)="ajouterproduit(commande.NumCmd)">
+    <ion-badge  padding style="margin-right:10px;border-radius: 50%;padding:10px;background-color: #bd2c08;">{{ commande.NumCmd }} </ion-badge>
+    <div><label>{{commande.date}}</label>
+     <label>{{commande.id_client}}</label>
+    </div>
+    
+  </ion-item>
+</ion-list>
 </ion-content>

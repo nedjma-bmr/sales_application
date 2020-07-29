@@ -3,11 +3,11 @@
      
     <ion-title>Clients</ion-title>
     <ion-buttons slot="start">
-      <ion-menu-button  menu="main-menu"></ion-menu-button>
+      <ion-menu-button ></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
   
-  <ion-item>
+  <ion-item lines = "full">
     <ion-searchbar
   search-icon ="search-outline"
   showcancelbutton=""
@@ -36,21 +36,24 @@
   </ion-fab>
 
   
-  
-<ion-list *ngFor = "let client of displayClients">
-  <ion-item-sliding>
-    <ion-item button (click)="openDetail()"> 
-      <ion-avatar slot="start">
-        <div class="avatar">
-        {{client.design_client.substring(0, 1).toUpperCase()}}
-      </div>
-      </ion-avatar>
+  <div class = "margin" >
+<ion-list lines  *ngFor = "let client of displayClients" lines="full" >
+  <ion-item-sliding  >
+    <ion-item button  (click)="openDetail(client.id)" class = "list" > 
       <ion-label> 
-        <h3 class ="title">{{client.design_client}}</h3>
-        <p class ="subtext">
-           {{ 'De ' +  client.adresse + ' Tel: ' + client.tel  }}
-      </p>
-    </ion-label>
+        
+        <h5 style="font-weight: bolder;">
+          <ion-icon name="person"></ion-icon> {{client.design_client}}
+        </h5>
+     
+        <h5 >  {{ 'De : ' +  client.adresse  }}</h5>
+
+        <p>
+          <ion-icon name="call"></ion-icon> {{client.tel}}
+        </p>
+       
+      </ion-label>
+      
     </ion-item>
     
     <ion-item-options side="end" >
@@ -72,6 +75,7 @@
 
 
 </ion-list>
+</div>
 </ion-content>
 
 

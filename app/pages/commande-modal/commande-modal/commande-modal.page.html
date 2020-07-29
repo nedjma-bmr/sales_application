@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="closeModal()">
+        Fermer
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{isUpdate ? 'Modifier' : 'Ajout'}} Client</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="calendar"></ion-icon>
+        <ion-datetime
+          displayFormat="D MMM YYYY H:mm"
+          min="1996"
+          name="date"
+          value="2005-06-17T11:06Z"
+          [(ngModel)]="data.date"
+          #dateCtrl="ngModel"
+          placeholder="selectionnez une date"
+        ></ion-datetime>
+      </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let i of displayClients">{{i}}</ion-item>
+      </ion-list>
+     
+      <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+      <ion-button
+        type="submit"
+        fill="outline"
+        expand="block"
+        color="primary"
+        class="ion-margin-top"
+        type="submit"
+        [disabled]="!f.valid"
+      >
+        {{ isUpdate ? 'Modifier ' : 'Enregister'}}
+      </ion-button>
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,62 @@
+<ion-header no-header >
+  
+  
+    
+    
+    <div class ="ion-text-end">
+      <ion-button (click)="dismissModal()" fill="clear" color ="dark"> 
+        
+        <ion-icon name="close" slot="start"></ion-icon>
+        
+        </ion-button>
+     
+    </div>
+  
+</ion-header>
+
+<ion-content class="padding">
+
+  
+  <ion-item>   
+    <ion-label position = "fixed" > 
+      <h2 class="one"> Numéro : </h2>
+     </ion-label>
+      <b class = "two"> 73138</b> 
+  </ion-item>
+  <ion-item>  
+    <ion-label position = "fixed" > <h2> Date : </h2> 
+    </ion-label>
+    <b> 2018-11-14</b> 
+  </ion-item>
+  <ion-item>  
+    <ion-label position = "fixed" > <h2> Client : </h2> </ion-label>
+    <b> Habel</b> 
+  </ion-item>
+  <ion-item>  
+    <ion-label position = "fixed" > <h2> Total HT: </h2> </ion-label>
+  </ion-item>
+  <ion-item>  
+    <ion-label position = "fixed" > <h2> Total TVA : </h2> </ion-label>
+  </ion-item>
+  <ion-item>  
+    <ion-label position = "fixed" > <h2> Total TTC : </h2> </ion-label>
+  </ion-item>
+
+<ion-item>  
+  <ion-label position = "fixed" > <h2> Total : </h2> </ion-label>
+</ion-item>
+
+<div class = buttons>
+<ion-button  (click)="openModal(devisAfficher.id_proforma)" expand="block" color = "green" >
+  Voir les produits 
+</ion-button>
+<ion-button routerLink="/devis" expand="block" color = "green" >
+  Remise 
+</ion-button>
+
+<ion-button routerLink="/devis" expand="block" color = "green" >
+  Imprimer 
+</ion-button>
+</div>
+
+</ion-content>

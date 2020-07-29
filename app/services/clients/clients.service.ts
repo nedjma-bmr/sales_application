@@ -12,7 +12,7 @@ export class ClientsService {
 
   private url= 'http://localhost/app/api/clients';
 
-
+  private currentClientId:string;
   constructor(private http:HttpClient) { }
   
   /**
@@ -40,4 +40,16 @@ export class ClientsService {
         return this.http.delete<ApiResponse>(this.url + '/' + id);
   }
   
+  setCurrentClientId(clientId : string){
+    this.currentClientId = clientId;
+  }
+ 
+  
+  getCurrentClientId(){
+    return this.currentClientId;
+  }
+ 
+  emptyCurrentClientId(){
+    this.currentClientId = "";
+  }
 }

@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ajout-produit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+  <form (ngSubmit)="submitForm()" novalidate>
+   
+<ion-item>
+ Commande № {{ num }}
+</ion-item>
+
+<ion-item lines="full" class="itm">
+  <ion-label style="color: dimgray;">Séléctionner une famille de produit </ion-label>
+
+  <ionic-selectable
+    [(ngModel)]="famileModel"
+    itemValueField="code_fam"
+    itemTextField="design_fam"
+    [canSearch]="true"
+    [items]="familles"
+    headerColor="success"
+    name="select_famille"
+    (onChange)="portChange2($event)"
+   
+  >
+    <div class="ionic-selectable-icon"></div>
+    <ng-template ionicSelectableCloseButtonTemplate>
+      <ion-icon name="arrow-back"></ion-icon>
+    </ng-template>
+</ionic-selectable>
+</ion-item>
+
+
+  <ion-item lines="full" class="itm">
+    <ion-label style="color: dimgray;">Séléctionner un Produit </ion-label>
+
+    <ionic-selectable
+      [(ngModel)]="produitModel1"
+      itemValueField="id_prod"
+      itemTextField="design_prod"
+      [canSearch]="true"
+      [items]="displayProduit"
+      headerColor="success"
+      name="select_produit"
+      (onChange)="portChange($event)"
+     
+    >
+      <div class="ionic-selectable-icon"></div>
+      <ng-template ionicSelectableCloseButtonTemplate>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ng-template>
+  </ionic-selectable>
+  </ion-item>
+
+   
+  <ion-item lines="full">
+    <ion-label position="floating">Quantité</ion-label>
+    <ion-input type="number" [(ngModel)]="command_produit.qte" name="qte" [ngModelOptions]="{standalone: true}"></ion-input>
+  </ion-item>
+
+  <ion-item lines = "full">
+    <ion-label position="floating"> Prix de vente HT: </ion-label>
+    <ion-input  type="number" [(ngModel)]="command_produit.puht" name="puht"></ion-input>
+  </ion-item>
+
+  <ion-item lines = "full">
+    <ion-label position="floating">Remise: </ion-label>
+    <ion-input  type="number" [(ngModel)]="command_produit.remise" name="remise"></ion-input>
+  </ion-item>
+
+  
+
+  <ion-button
+  color="primary"
+  expand="block"
+  (click)="valider()"
+  >Valider</ion-button
+>
+
+<ion-list *ngFor="let Cprod of commandesproduits1">
+  <ion-item>
+     {{ Cprod.id_produit }}
+  </ion-item>
+</ion-list>
+
+
+  <ion-button
+  type="submit"
+  color="green"
+  >Enregister</ion-button
+>
+
+
+  </form>
+
+</ion-content>

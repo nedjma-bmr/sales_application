@@ -1,5 +1,5 @@
 .avatar{
-background-color: blueviolet;
+background-color: rgb(118, 165, 170);
 width: 100% ;
 height: 100% ;
 border-radius: 50px;
@@ -17,31 +17,48 @@ color: aliceblue ;
 
 .title{
     font-weight: 600 ;
-    font-size: 17px ;
+    font-size: 16px ;
 
 
     
 }
+
 ion-searchbar{
-    --border-radius: 40px;
-    --icon-color : gray ;
+    --border-radius: 50px;
+    --icon-color : green ;
     --background-color : gray ; 
 }
 
-.ion-color-green {
-    --ion-color-base: #5b489a;
+ 
+  .ion-color-green {
+    --ion-color-base: var(--ion-color-green);
     --ion-color-base-rgb: var(--ion-color-green-rgb);
     --ion-color-contrast: var(--ion-color-green-contrast);
     --ion-color-contrast-rgb: var(--ion-color-green-contrast-rgb);
     --ion-color-shade: var(--ion-color-green-shade);
     --ion-color-tint: var(--ion-color-green-tint);
   }
-  
-ion-item{
+
+
+.list{
     --padding-start : 0;
+    --border-color : green ; 
+    
+}
+h5{
+  margin-bottom: 8px; color : dimgray ; font-size: inherit;
+}
+p{
+  font-size: unset; color : dimgray ;
+}
+ion-label{
+  margin-top: 5px;
+}
+.margin{
+  margin-top: -5px;
+  
 }
 
 
 
-
-
+  
